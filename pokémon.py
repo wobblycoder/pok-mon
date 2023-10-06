@@ -34,6 +34,14 @@ class Player:
     def battle(self, opponent):
         """
         TODO: make a fight happen
+
+        Add hit points
+        Take turns
+        Allow the player to recall a pokemon
+        Allow the player to choose a pokemon
+        Allow the player to choose which attacks
+        Implement effects like stun, etc
+
         """
         p1 = self.pokéballs[0]
         p2 = opponent.pokéballs[0]
