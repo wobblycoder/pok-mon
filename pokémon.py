@@ -19,15 +19,15 @@ class Pokémon:
         self.elements = elements
         self.attacks = []
 
-    def learn(self, attack, power, effects=[]):
+    def learn(self, attack: str, power: int, effects: list[Effects]=[]):
         self.attacks.append((attack, power, effects))
 
 class Player:
-    def __init__(self, name):
+    def __init__(self, name:str):
         self.name = name
         self.pokéballs = []
 
-    def capture(self, pokemon):
+    def capture(self, pokemon: Pokémon):
         self.pokéballs.append(pokemon)
 
     def battle(self, opponent):
@@ -63,14 +63,14 @@ def main():
     josh = Player("Josh")
     chris = Player("Chris")
 
-    pika = Pokémon("Pikachu", Element.ELECTRIC)
+    pika = Pokémon("Pikachu", [Element.ELECTRIC])
     pika.learn("Static", 70, [Effects.STUN, 0.3])
 
     bulby = Pokémon("Bulbasaur", [Element.GRASS, Element.POISON])
     bulby.learn("Seed Bomb", 55)
 
-    josh.capture(bulby)
-    chris.capture(pika)
+    josh.capture(pika)
+    chris.capture(bulby)
 
     josh.battle(chris)
 
