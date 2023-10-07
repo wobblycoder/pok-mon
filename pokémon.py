@@ -8,16 +8,15 @@ class Element(Enum):
     AIR = 4,
     ELECTRIC = 5,
     FAIRY = 6,
-    POISON = 7,
-    GRASS_POISON = 8
+    POISON = 7
 
 class Effects(Enum):
     STUN = 1
 
 class Pokémon:
-    def __init__(self, name: str, element: Element):
+    def __init__(self, name: str, elements: list[Element]):
         self.name = name
-        self.element = element
+        self.elements = elements
         self.attacks = []
 
     def learn(self, attack, power, effects=[]):
@@ -59,6 +58,7 @@ class Player:
         else:
             print("It's a draw!")
 
+
 def main():
     josh = Player("Josh")
     chris = Player("Chris")
@@ -66,11 +66,11 @@ def main():
     pika = Pokémon("Pikachu", Element.ELECTRIC)
     pika.learn("Static", 70, [Effects.STUN, 0.3])
 
-    josh.capture(pika)
-
-    bulby = Pokémon("Bulbasaur", Element.GRASS_POISON)
+    bulby = Pokémon("Bulbasaur", [Element.GRASS, Element.POISON])
     bulby.learn("Seed Bomb", 55)
-    chris.capture(bulby)
+
+    josh.capture(bulby)
+    chris.capture(pika)
 
     josh.battle(chris)
 
